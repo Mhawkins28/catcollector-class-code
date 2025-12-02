@@ -1,7 +1,10 @@
 from django.urls import path
-from .views import Home, CatList, CatDetail, FeedingListCreate, FeedingDetail, ToyList, ToyDetail, AddToyToCat, RemoveToyFromCat
+from .views import Home, CatList, CatDetail, FeedingListCreate, FeedingDetail, ToyList, ToyDetail, AddToyToCat, RemoveToyFromCat, CreateUserView, LoginView, VerifyUserView
 
 urlpatterns = [
+    path('users/register/', CreateUserView.as_view(), name='register'),
+    path('users/login/', LoginView.as_view(), name='login'),
+    path('users/token/refresh/', VerifyUserView.as_view(), name='token_refresh'),
     path('', Home.as_view(), name='home'),
     path('cats/', CatList.as_view(), name='cat-list'),
     path('cats/<int:id>/', CatDetail.as_view(), name='cat-detail'),
